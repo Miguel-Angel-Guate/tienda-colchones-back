@@ -18,6 +18,8 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'))
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 
 app.use('/users', usersRouter);
