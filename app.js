@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 3000;
 
 const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/users', usersRouter);
+app.use('/products', productsRouter);
 
 app.listen(PORT, () => console.log(`the server is running on port ${PORT}`))
 
