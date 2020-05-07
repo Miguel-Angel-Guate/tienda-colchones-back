@@ -6,7 +6,16 @@ const ProductController = {
               Product.find()
               .then(products => res.send({ products, product: req.product}))
               .catch(console.error)
-       }
+       },
+     create(req, res){
+            if(req.user.role == "admin") {
+              Product.create({...req.body})
+              .then(product => res.send({ product }))
+            .catch(console.error)
+            }
+            
+            
+     }  
 }
 
 
