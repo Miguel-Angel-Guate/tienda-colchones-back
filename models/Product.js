@@ -6,6 +6,7 @@ const ProductSchema = new mongoose.Schema({
               type:String,
               enum:['colchones','somieres']
        },
+       img:String,
        price:Number,
        
 });
