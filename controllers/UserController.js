@@ -1,5 +1,9 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const jwt_auth = require('../config/keys')
+
+
 
 
 const UserController = {
@@ -25,15 +29,43 @@ const UserController = {
                      })
               }
 
-       }
+       },
+       async login(req, res) {
+              try {
+                  const user = await User.findOne({
+                      email: req.body.email
+                  });
+                  if (!user) {
+                      return res.status(400).send({
+                          message: 'Email o contraseña incorrectos'
+                      })
+                  }
+                  const isMatch = bcrypt.compare(req.body.password, user.password);
+                  if (!isMatch) {
+                      return res.status(400).send({
+                          message: 'Email o contraseña incorrectos'
+                      })
+                  }
+                  const token = jwt.sign({
+                      _id: user._id
+                  }, jwt_auth);
+                  if (user.tokens.length > 4) user.tokens.shift();
+                  user.tokens.push(token);
+                  await user.replaceOne(user);
+                  res.send({
+                      user,
+                      token,
+                      message: 'Conectado con éxito'
+                  })
+              } catch (error) {
+                  console.error(error)
+                  res.status(500).send({
+                      message: 'Hubo un problema al intentar conectar'
+                  })
+              }
+          },
 
-//        {
-              
-//               register.create({...req.body})
-//               .then(product => res.send({ product }))
-//             .catch(console.error)
-       
-//        }
+
 }
 
 
