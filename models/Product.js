@@ -11,6 +11,7 @@ const ProductSchema = new mongoose.Schema({
        img:String,
        price:Number,
        relevant:Boolean,
+       description:String,
        user: {
               type: ObjectId,
               ref: 'User'
