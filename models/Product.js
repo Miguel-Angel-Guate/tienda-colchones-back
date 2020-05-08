@@ -8,6 +8,7 @@ const ProductSchema = new mongoose.Schema({
        },
        img:String,
        price:Number,
+       relevant:Boolean,
        
 });
 
