@@ -2,6 +2,7 @@ require('dotenv-flow').config();
 require('./config/mongoose')
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
@@ -10,6 +11,12 @@ const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 
 const app = express();
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +39,7 @@ app.use('/products', productsRouter);
 
 // error handler
 // app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+// set locals, only providing error in development
 //   res.locals.message = err.message;
 //   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
