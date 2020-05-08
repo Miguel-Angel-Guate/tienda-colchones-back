@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ProductSchema = new mongoose.Schema({
+       role:String,
        name:String,
        kind:{
               type:String,
@@ -9,6 +11,11 @@ const ProductSchema = new mongoose.Schema({
        img:String,
        price:Number,
        relevant:Boolean,
+       user: {
+              type: ObjectId,
+              ref: 'User'
+          },
+       
        
 });
 

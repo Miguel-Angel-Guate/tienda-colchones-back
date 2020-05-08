@@ -8,8 +8,10 @@ const ProductController = {
               .catch(console.error)
        },
      create(req, res){
+            
             if(req.user.role == "admin") {
-              Product.create({...req.body})
+              Product.create({...req.body, user: req.user._id
+              })
               .then(product => res.send({ product }))
             .catch(console.error)
             }
