@@ -1,13 +1,9 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const ProductSchema = new mongoose.Schema({
+const MattressesSchema = new mongoose.Schema({
        role:String,
        name:String,
-       kind:{
-              type:String,
-              enum:['colchones','somieres']
-       },
        img:String,
        price:Number,
        relevant:Boolean,
@@ -20,5 +16,5 @@ const ProductSchema = new mongoose.Schema({
        
 });
 
-const Product = mongoose.model('Product',ProductSchema);
-module.exports = Product;
+const Mattresses = mongoose.model('Mattresses', MattressesSchema);
+module.exports = Mattresses;

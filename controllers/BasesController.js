@@ -1,35 +1,35 @@
-const Product = require('../models/Product')
+const Bases = require('../models/Bases')
 
 
-const ProductController = {
+const BasesController = {
        getAll(req, res) {
-              Product.find()
-              .then(products => res.send({ products, product: req.product}))
+              Bases.find()
+              .then(Bases => res.send({ Bases, base: req.base}))
               .catch(console.error)
        },
      create(req, res){
             
             if(req.user.role == "admin") {
-              Product.create({...req.body, user: req.user._id
+              Bases.create({...req.body, user: req.user._id
               })
-              .then(product => res.send({ product }))
+              .then(base => res.send({ base }))
             .catch(console.error)
             }
             
             
      },
      getById(req, res) {
-       Product.findById(req.params._id)
+       Bases.findById(req.params._id)
            
-           .then(product => res.send(product))
+           .then(base => res.send(base))
            .catch(error => {
                console.error(error);
                res.send(error)
            })
    },
    patch(req, res) {
-       Product.findOneAndUpdate(req.params._id)
-       .then(product => res.send(product))
+       Bases.findOneAndUpdate(req.params._id)
+       .then(base => res.send(base))
            .catch(error => {
                console.error(error);
                res.send(error)
@@ -37,8 +37,8 @@ const ProductController = {
 
    },
    delete(req, res){
-          Product.findOneAndDelete(req.params._id)
-          .then(product => res.send(product))
+          Bases.findOneAndDelete(req.params._id)
+          .then(mattress => res.send(base))
            .catch(error => {
                console.error(error);
                res.send(error)
@@ -49,4 +49,4 @@ const ProductController = {
 }
 
 
-module.exports = ProductController;
+module.exports = BasesController;
