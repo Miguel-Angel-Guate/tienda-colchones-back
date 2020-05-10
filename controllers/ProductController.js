@@ -27,6 +27,24 @@ const ProductController = {
                res.send(error)
            })
    },
+   patch(req, res) {
+       Product.findOneAndUpdate(req.params._id)
+       .then(product => res.send(product))
+           .catch(error => {
+               console.error(error);
+               res.send(error)
+           })
+
+   },
+   delete(req, res){
+          Product.findOneAndDelete(req.params._id)
+          .then(product => res.send(product))
+           .catch(error => {
+               console.error(error);
+               res.send(error)
+           })
+
+   },
 
 }
 
