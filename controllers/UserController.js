@@ -29,7 +29,7 @@ const UserController = {
                      const url = API_URL + 'users/confirm/' + emailToken;
                      await transporter.sendMail({
                             to: email,
-                            subject: 'Validate your account in ginzo colchones',
+                            subject: 'Validate your account in Ginzo colchones please',
                             html: `
                          <h3>Welcome ${
 req.body.name
@@ -84,12 +84,12 @@ req.body.name
                      await
                      user.save();
 
-                     res.redirect('http://localhost:4200/user/confirmado/' + authToken);
+                     res.redirect('API_URL' + authToken);
 
               } catch (error) {
                      console.error(error)
                      res.status(500).send({
-                            message: 'Ha habido un problema al confirmar el usuario',
+                            message: 'we had some wrong for the confirm the user',
                             error
                      })
               }
@@ -101,13 +101,13 @@ req.body.name
                      });
                      if (!user) {
                             return res.status(400).send({
-                                   message: 'Email o contraseña incorrectos'
+                                   message: 'Email or pass invalid'
                             })
                      }
                      const isMatch = bcrypt.compare(req.body.password, user.password);
                      if (!isMatch) {
                             return res.status(400).send({
-                                   message: 'Email o contraseña incorrectos'
+                                   message: 'Email or pass invalid, just check for the validate your profile'
                             })
                      }
                      const token = jwt.sign({
@@ -119,12 +119,12 @@ req.body.name
                      res.send({
                             user,
                             token,
-                            message: 'Conectado con éxito'
+                            message: 'succesffully connected'
                      })
               } catch (error) {
                      console.error(error)
                      res.status(500).send({
-                            message: 'Hubo un problema al intentar conectar'
+                            message: 'some wront to try the connect'
                      })
               }
        },

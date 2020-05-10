@@ -17,7 +17,17 @@ const ProductController = {
             }
             
             
-     }
+     },
+     getById(req, res) {
+       Product.findById(req.params._id)
+           
+           .then(product => res.send(product))
+           .catch(error => {
+               console.error(error);
+               res.send(error)
+           })
+   },
+
 }
 
 
