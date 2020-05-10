@@ -7,6 +7,7 @@ const ProductController = require('../controllers/ProductController');
 router.get('/', ProductController.getAll);
 router.get('/:_id', ProductController.getById);
 router.delete('/:_id', ProductController.getById);
+router.patch('/:_id', ProductController.getById);
 router.post('/',authentication,  isAdmin,  ProductController.create);
 
 
