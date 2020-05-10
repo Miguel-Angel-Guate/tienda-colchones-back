@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {jwt_auth ,  API_URL} = require('../config/keys')
+const {jwt_auth ,  FRONT_URL} = require('../config/keys')
 
 const transporter = require('../config/nodemailer');
 
@@ -26,7 +26,7 @@ const UserController = {
                      }, jwt_auth, {
                             expiresIn: '48h'
                      });
-                     const url = API_URL + 'users/confirm/' + emailToken;
+                     const url = FRONT_URL + 'users/confirm/' + emailToken;
                      await transporter.sendMail({
                             to: email,
                             subject: 'Validate your account in Ginzo colchones please',
@@ -84,7 +84,7 @@ req.body.name
                      await
                      user.save();
 
-                     res.redirect('API_URL' + authToken);
+                     res.redirect(FRONT_URL + authToken);
 
               } catch (error) {
                      console.error(error)

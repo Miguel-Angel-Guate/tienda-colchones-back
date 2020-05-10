@@ -2,8 +2,8 @@ const Product = require('../models/Product')
 
 
 const ProductController = {
-       getAllByType(req, res) {
-              Product.find({type:req.params.type})
+       getAllByKind(req, res) {
+              Product.find({kind:req.params.kind})
               .then(products => res.send(products))
               .catch(console.error)
        },
@@ -13,8 +13,8 @@ const ProductController = {
               .then(product => res.send({ product }))
             .catch(console.error)
      },
-     getByTypeAndId(req, res) {
-       Product.findOne({type:req.params.type,_id:req.params._id})
+     getByKindAndId(req, res) {
+       Product.findOne({kind:req.params.kind,_id:req.params._id})
            .then(product => res.send(product))
            .catch(error => {
                console.error(error);

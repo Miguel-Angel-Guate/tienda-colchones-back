@@ -8,7 +8,7 @@ const ProductSchema = new mongoose.Schema({
        },
        kind: {
               type: String,
-              enum: ['mattress', 'bed']
+              enum: ['colchones', 'somieres']
        },
        img: String,
        price: {
