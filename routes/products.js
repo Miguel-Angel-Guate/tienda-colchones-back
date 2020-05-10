@@ -4,11 +4,11 @@ const {isAdmin, authentication } = require('../middleware/auth')
 
 const ProductController = require('../controllers/ProductController');
 
-router.get('/', ProductController.getAll);
-router.get('/:_id', ProductController.getById);
-router.delete('/:_id', ProductController.getById);
-router.patch('/:_id', ProductController.getById);
+router.get('/:type', ProductController.getAllByType);
+router.get('/:type/:_id', ProductController.getByTypeAndId);
 router.post('/',authentication,  isAdmin,  ProductController.create);
+router.patch('/:_id',authentication,  isAdmin, ProductController.update);
+router.delete('/:_id',authentication,  isAdmin, ProductController.delete);
 
 
 module.exports = router;

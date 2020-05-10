@@ -2,23 +2,28 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ProductSchema = new mongoose.Schema({
-       role:String,
-       name:String,
-       kind:{
-              type:String,
-              enum:['colchones','somieres']
+       name: {
+              type: String,
+              required: true
        },
-       img:String,
-       price:Number,
-       relevant:Boolean,
-       description:String,
+       kind: {
+              type: String,
+              enum: ['mattress', 'bed']
+       },
+       img: String,
+       price: {
+              type: Number,
+              required: true
+       },
+       relevant: Boolean,
+       description: String,
        user: {
               type: ObjectId,
               ref: 'User'
-          },
-       
-       
+       },
+
+
 });
 
-const Product = mongoose.model('Product',ProductSchema);
+const Product = mongoose.model('Product', ProductSchema);
 module.exports = Product;
