@@ -7,11 +7,15 @@ const ProductController = {
               .then(products => res.send(products))
               .catch(console.error)
        },
-       getAllByRelevant(req, res) {
-           Product.find(({Relevant:true:req.params.relevant}))
+
+       getRelevant(req, res) {
+           Product.find(({relevant:true(req.params.relevant)}))
            .then(product => res.send(products))
            .catch(console.error)
+           
        },
+       
+       
      create(req, res){
               Product.create({...req.body, user: req.user._id
               })
