@@ -33,7 +33,7 @@ const UserController = {
                             html: `
                          <h3>Welcome ${
 req.body.name
-} to Beyond the ginzo, only one more step</h3>
+} to ginzo, we hope enjoy this time,  only one more step</h3>
                          <a href="${url}">Click here and complete your register</a>
                          This link expire in 48 hours.
                          `
